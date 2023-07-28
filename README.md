@@ -1,72 +1,57 @@
-# Actividad
-Completad las funciones siguiendo las instrucciones del comentario en el pichero `actividad.js`. No deberíais tener que 
-modificar el código en `ImageHandler.js` en ningun caso.
+# Aplicación de Procesamiento de Imágenes
 
-Por favor, no cambiéis las líneas que ya estan escritas: En cada función ya viene declarado el outputPath y
-en la variable pixels tenéis la imagen ya cargada en formato matriz de valores RGB. Al mismo tiempo, al final de cada
-función ya se encuentra el savePixels para guardar la imagen en el outputPath.
+Esta es una aplicación de Node.js para el procesamiento de imágenes utilizando la clase `ImageHandler`. La aplicación ofrece varias funciones de transformación de imágenes y permite a los usuarios elegir una transformación específica proporcionando una opción como argumento en la línea de comandos.
 
+## Requisitos
+
+Para ejecutar esta aplicación, debes tener instaladas las siguientes dependencias:
+
+- Node.js (versión 12 o superior)
+- npm (Node Package Manager)
 
 ## Instalación
 
-Primero de todo tenéis que seguir los pasos en:
+1. Clona o descarga el repositorio en tu máquina local.
+2. Navega al directorio del proyecto utilizando la terminal o el símbolo del sistema.
+3. Instala las dependencias requeridas con npm:
 
-https://www.npmjs.com/get-npm
-
-Una vez tengáis `NPM` instalado, en la terminal de Webstorm tenéis que escribir las siguientes líneas una por una tal 
-como hicimos en la 3ª clase:
-
+```bash
+npm install
 ```
-npm install fs
-npm install save-pixels 
-npm install get-pixels
-npm install deasync
-npm install ndarray
-```
- 
-Si tenéis cualquier duda o problema comentadlo cuanto antes en el foro. Sobretodo no lo dejéis para el último día ya que si esto 
-no os funciona no podréis ejecutar vuestro código.
 
 ## Uso
 
-Simplemente se crea un objeto ImageHandler con el path a la imagen y, usando la función `getPixels()`, se consigue
-la información de la imagen en formato RGB.
+Para usar la aplicación de procesamiento de imágenes, ejecuta el script con la opción de transformación deseada como argumento en la línea de comandos. Las opciones disponibles son las siguientes:
 
-Para guardar una imagen simplemente llamamos a la función `savePixels(pixelsToSave, newPath)`. Esta función también
-acepta un nuevo ancho/alto de imagen en caso de que la imagen que queremos guardar no tenga los mismos valores que
-la original.
+1. Convertir a Rojo: `node actividad.js 1`
+   Convierte la imagen a tonos rojos, estableciendo los canales verde y azul en 0.
 
-Si descomentáis al final del documento la función que queráis probar os debería aparecer en la carpeta `output` la imagen resultante de los cambios que hayáis programado.
+2. Convertir a Píxeles Verdes: `node actividad.js 2`
+   Convierte la imagen a tonos verdes, estableciendo los canales rojo y azul en 0.
+3. Convertir a Píxeles Azules: `node actividad.js 3`
+   Convierte la imagen a tonos azules, estableciendo los canales rojo y verde en 0.
 
-```
-No las descomentéis todas a la vez, tardará mucho 
-en procesar y además puede que JavaScript se quede
-sin memoria y falle.
-```
+4. Convertir a Píxeles Grises: `node actividad.js 4`
+   Convierte la imagen a escala de grises.
 
-## RGB
+5. Convertir a Píxeles en Blanco y Negro: `node actividad.js 5`
+   Convierte la imagen a blanco y negro en función de un valor umbral (umbral predeterminado es 50).
 
-La función `getPixels()` devuelve una matriz de pixeles RGB.
+6. Escalar hacia Abajo: `node actividad.js 6`
+   Escala la imagen a la mitad de su tamaño original utilizando interpolación bilineal.
 
-Una matriz no es más que un array con arrays en sus posiciones para representar los pixeles en la pantalla. A su vez
-cada pixel es un array con 3 posiciones, una para cada valor RGB.
+7. Disminuir Brillo: `node actividad.js 7`
+   Reduce el brillo de la imagen en un factor de 0.5.
 
-Por ejemplo si tenemos una imagen 2x2 con 4 píxeles tal que:
+8. Invertir Colores: `node actividad.js 8`
+   Invierte los colores de la imagen.
 
-| Rojo | Verde  |
-|------|--------|
-| Azul | Blanco |
+9. Combinar: `node actividad.js 9`
+   Combina dos imágenes (`input/cat.jpg` e `input/dog.jpg`) con mezcla alfa ajustable.
 
-Esto corresponderá a la siguiente matriz:
+## Notas Adicionales
 
-[<br>
-&nbsp;&nbsp;&nbsp;&nbsp;    [ [255, 0, 0], [0, 255, 0]     ],<br>
-&nbsp;&nbsp;&nbsp;&nbsp;    [ [0, 0, 255], [255, 255, 255] ]<br>
-]
-
-Como podéis ver tenemos un array con 2 filas.
-
-En cada una de las filas tenemos 2 columnas.
-
-Finalmente, en cada fila y columna tenemos un array con los 3 valores RGB del pixel.
-
+- La clase `ImageHandler` se utiliza para manejar la carga y guardado de imágenes. La clase proporciona métodos para obtener los píxeles de la imagen y su forma, así como para guardar los píxeles en un archivo.
+- Las imágenes se guardan en formato JPG con una calidad de 100 para mantener la máxima calidad posible. Puedes ajustar el parámetro de calidad en el método `savePixels` para diferentes niveles de compresión (valores de calidad más bajos para mayor compresión y tamaños de archivo más pequeños).
+- Las imágenes utilizadas para la combinación (gato y perro) deben estar ubicadas en el directorio `input`.
+- Es posible correr el programa sin argumentos pero se debe descomentar la linea 256 que dice `let option = 1;` y comentar la linea anterior (255)

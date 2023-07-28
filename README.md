@@ -54,4 +54,4 @@ Para usar la aplicación de procesamiento de imágenes, ejecuta el script con la
 - La clase `ImageHandler` se utiliza para manejar la carga y guardado de imágenes. La clase proporciona métodos para obtener los píxeles de la imagen y su forma, así como para guardar los píxeles en un archivo.
 - Las imágenes se guardan en formato JPG con una calidad de 100 para mantener la máxima calidad posible. Puedes ajustar el parámetro de calidad en el método `savePixels` para diferentes niveles de compresión (valores de calidad más bajos para mayor compresión y tamaños de archivo más pequeños).
 - Las imágenes utilizadas para la combinación (gato y perro) deben estar ubicadas en el directorio `input`.
-- Es posible correr el programa sin argumentos pero se debe descomentar la linea 256 que dice `let option = 1;` y comentar la linea anterior (255)
+- En actividad.js es posible correr el programa sin argumentos pero se debe descomentar la linea 256 que dice `let option = 1;` y comentar la linea anterior (255)
